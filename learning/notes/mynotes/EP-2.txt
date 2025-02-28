@@ -1,0 +1,23 @@
+NPM 
+
+it is a package manager 
+It helps you **install, update, and manage packages** (libraries/modules) in JavaScript projects, including React.
+
+what are **Dependencies**
+**dependencies** are **external libraries or modules** that your project **relies on** to function properly.
+
+- **`react`** → Core React library
+- **`react-dom`** → Helps render React components
+- **`axios`** → Helps make API requests
+- **`react-router-dom`** → Handles navigation (routing) in React
+
+What are **Packages** 
+a **package** is a collection of JavaScript files that provide **specific functionality** and can be reused in different projects.
+
+| Feature | **Package** | **Dependency** |
+| --- | --- | --- |
+| **Definition** | A reusable JavaScript module or library. | A package that your project **relies on** to work properly. |
+
+Caret and Tilde
+^ (Caret is used to update the miner version for any dependencies like : 2.8.3 → 2.8.4)
+~ (Tilde is used to update major version like : 2.8.4 → 3.0.0)
