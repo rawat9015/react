@@ -21,3 +21,4 @@ a **package** is a collection of JavaScript files that provide **specific functi
 Caret and Tilde
 ^ (Caret is used to update the miner version for any dependencies like : 2.8.3 → 2.8.4)
 ~ (Tilde is used to update major version like : 2.8.4 → 3.0.0)
+

@@ -1,4 +1,7 @@
 
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
 const heading = React.createElement("h1" , {id:'head'}, "Hello World from React!");
 
 const parentdiv = React.createElement("div" , {id:'parentdiv'}, 
