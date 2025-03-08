@@ -1,3 +1,7 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 #head{
     color: red;
 }
@@ -6,3 +10,82 @@
     background:red;
     color: white;
 }
+/* header section css  */
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.logo{
+    width: 100px;
+}
+.nav-item  > ul{
+  display: flex;
+  list-style-type: none;
+}
+.nav-item > ul > li{
+    padding-inline: 10px;
+    font-size: 20px;
+}
+.nav-item > ul > li:hover{
+    color: #f7b922;
+    background: black;
+}
+/* header section css  end*/
+
+/* Card section css */
+.res-container {
+    margin: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.res-container > .res-card{
+    background: white;
+    width: 330px;
+    height: 330px;
+    padding-inline: 10px;
+    padding-block: 25px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+.res-container > .res-card:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+}
+
+.res-container > .res-card > .res-logo {
+    width: 335px;
+    height:251px;
+}
+
+.res-container > .res-card > .res-row-1{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.res-container > .res-card > .res-row-1 span{
+    border-radius: 10px;
+    background: green;
+    padding-block: 3px;
+    padding-inline: 5px;
+    color: white;
+    font-weight: 600;
+}
+.res-container > .res-card > .res-row-1 span > .star-icon{
+    font-size: 10px;
+}
+.res-container > .res-card > .res-row-2 {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+.res-container > .res-card > .res-row-3 {
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
+}
+/* Card section css end*/
