@@ -1,8 +1,13 @@
 // import {restaurantList} from '../utiles/dataset';
 import RestaurantCard from './RestaurantCard';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Body = () => {
+
+    useEffect(() => {
+        console.log('body rendered done');
+        
+    }, []);
 
     let[restaurantList, setrestaurantList] = useState([
         {
@@ -37,8 +42,27 @@ const Body = () => {
           },
     ]);
 
+    let [number , setNummber] = useState([8]);
+
     return(
-    <div  className='body'>
+    <div className='body'>
+
+        <button className='rate-btn' onClick={() => {
+            number++;
+
+            setNummber(number);
+
+        }}>+</button>
+
+        <span>{number}</span>
+
+        <button className='rate-btn' onClick={() => {
+            number--;
+
+            setNummber(number);
+        }}>-</button>
+
+
         <div className='search'>
             <button className='rate-btn' onClick={() => {
                 
