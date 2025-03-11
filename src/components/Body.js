@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 const Body = () => {
 
     useEffect(() => {
-        console.log('body rendered done');
+       
         
     }, []);
 
