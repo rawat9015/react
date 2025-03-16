@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom/client';
 
-import Header from './components/header';
+import Header from './components/Header';
 import Body from './components/Body';
 
 // EP-4 (Building Food App)
