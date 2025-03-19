@@ -1,27 +1,33 @@
+import {CARD_IMG} from "../utiles/contstants";
+
+
 const RestaurantCard = (resList) => {
     const {
-        img,
+        cloudinaryImageId,
         name,
-        rating,
-        cuisine,
-        average_price,
-        delivery_time
+        avgRating,
+        cuisines,
+        costForTwo,
+        sla
     } = resList.resList; 
+
+    // console.log(resList.resList.info);
+    
 
     return (
         <div className='res-card'> 
-          <img src={img} className='res-logo'/>
+          <img src={CARD_IMG + cloudinaryImageId} className='res-logo'/>
             <div className='res-row-1'>
-            <h4 className='res-name'>{name}</h4><span> {rating} <i className="fa-solid fa-star star-icon"></i></span>
+            <h4 className='res-name'>{name}</h4><span> {avgRating} <i className="fa-solid fa-star star-icon"></i></span>
             </div>
 
             <div className='res-row-2'>
-                <p>{cuisine.join(',')}</p>   
-                <p>₹{average_price} for one</p> 
+                <p>{cuisines}</p>   
+                <p>{costForTwo}</p> 
             </div>
 
             <div className='res-row-3'> 
-                <p>{delivery_time}</p>
+                <p>{sla?.deliveryTime} Mins</p>
             </div>
         </div>
     )

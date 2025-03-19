@@ -42,11 +42,12 @@
 .res-container {
     margin: 50px;
     display: flex;
+    flex-wrap: wrap;
 }
 .res-container > .res-card{
     background: white;
-    width: 330px;
-    height: 330px;
+    width: 360px;
+    height: 360px;
     margin: 10px;
     padding-inline: 10px;
     padding-top:5px;
@@ -60,7 +61,7 @@
 }
 
 .res-container > .res-card > .res-logo {
-    width: 335px;
+    width: 360px;
     height:251px;
     border-radius: 10px;
 }
