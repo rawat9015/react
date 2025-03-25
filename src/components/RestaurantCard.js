@@ -22,7 +22,7 @@ const RestaurantCard = (resList) => {
             </div>
 
             <div className='res-row-2'>
-                <p>{cuisines}</p>   
+                <p>{cuisines.join(', ')}</p>   
                 <p>{costForTwo}</p> 
             </div>
 
