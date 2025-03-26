@@ -11,7 +11,7 @@ const Body = () => {
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [restaurantList]);
 
     const fetchData = async () => {
 
