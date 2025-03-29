@@ -31,7 +31,13 @@
     padding-inline: 10px;
     font-size: 20px;
 }
-.nav-item > ul > li:hover{
+
+.nav-item > ul > li > a{
+   text-decoration: none;
+   color: black;
+} 
+
+.nav-item > ul > li>a:hover{
     color: #f7b922;
     background: black;
 }

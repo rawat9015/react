@@ -1,9 +1,14 @@
+import { useRouteError } from "react-router";
+
 const Error = () => {
 
+    const err = useRouteError();
+    
     return(
         <div>
-            <h1>404 Page Not found</h1>
-            <p><i>Try again with right path</i></p>
+            <h1>Oops!</h1>
+            <p>{err.status} : {err.statusText}</p>
+            <p><i>{err.data}</i></p>
         </div>
     )
 }
