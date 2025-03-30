@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
 }
+
+
 #head{
     color: red;
 }
@@ -113,4 +115,111 @@
 .seacrh-box{
     padding: 10px;
     margin-inline: 20px;
+}
+
+/* Restaurant Menu Start */
+.main-menu{
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+   
+    height: 100vh;
+    background-color: #f8f8f8;
+}
+.main-menu>div{
+    align-self: center;
+    justify-self: center;
+}
+.restaurant-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 800px;
+}
+
+.restaurant-card h2 {
+    margin: 0;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.rating {
+    color: green;
+    font-weight: bold;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.category a {
+    color: red;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.location, .delivery-time {
+    color: gray;
+}
+
+/* Menu Section */
+.menu-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* Menu Item Cards */
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-content {
+    width: 100%;
+}
+
+.menu-content h4 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.menu-content .price {
+    font-weight: bold;
+}
+
+.menu-content .discount {
+    color: red;
+    font-weight: bold;
+}
+
+.menu-content .description {
+    font-size: 0.9rem;
+    color: gray;
+}
+
+.add-btn {
+    background-color: orange;
+    border: none;
+    padding: 8px 12px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
 }
