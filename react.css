@@ -206,6 +206,8 @@
 }
 
 .menu-content .description {
+    padding-block: 25px;
+    padding-right: 25px;
     font-size: 0.9rem;
     color: gray;
 }
@@ -219,4 +221,10 @@
     cursor: pointer;
     border-radius: 5px;
     margin-top: 10px;
+}
+.menu-item-img{
+    width: 150px !important;
+    height: 150px !important;
+    border-radius:10px ;
+
 }

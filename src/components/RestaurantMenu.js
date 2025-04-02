@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import {MENU_ITEM_IMG} from "../utiles/contstants"
 
 const RestaurantMenu = () => {
 
@@ -18,9 +18,6 @@ const RestaurantMenu = () => {
 
         setresInfo(json.data);
 
-        console.log(resInfo);
-
-        // console.log(resInfo.cards[2].card.card.info);
 
         // areaName avgRating costForTwoMessage cuisines name totalRatingsString sla.slaString
 
@@ -29,7 +26,15 @@ const RestaurantMenu = () => {
     if( resInfo === null ) return <h1>Loading.....</h1>;
 
 
-    const {areaName, avgRating, costForTwoMessage, cuisines, name, totalRatingsString, sla} = resInfo.cards[2].card.card.info;
+    const {areaName, avgRating, costForTwoMessage, cuisines, name, totalRatingsString, sla} = resInfo?.cards[2]?.card?.card?.info;
+
+    const itemCards  = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards;
+    
+
+    console.log(itemCards);
+    
+    // console.log(resInfo.cards[4].groupedCard?.cardGroupMap?.REGULAR?.cards[1].card.card.itemCards[0].card.info.name);
+    
     
 
     return (
@@ -53,29 +58,30 @@ const RestaurantMenu = () => {
             <div className="menu-container">
 
                 {/* <!-- Menu Item 1 --> */}
-                <div className="menu-card">
+                {itemCards.map((menuList) => {
+                    console.log(menuList.card.info);
+
+                    return ( 
+                    <div className="menu-card">
                     <div className="menu-content">
-                        <h4>Veggie Supreme</h4>
-                        <span className="price">₹379</span>
-                        <span className="discount">🔥 60% OFF | USE SWIGGYIT</span>
-                        <span className="rating">⭐ 4.6 (15)</span>
-                        <p className="description">Serves 1 | A supreme combination of black olives, green capsicum, mushroom, onion, spicy red paprika & juicy sweet corn with flavourful pan sauce and 100% mozzarella cheese.</p>
+                        <h4>{menuList.card.info.name}</h4>
+                        <span className="price">₹{menuList.card.info.price/100}</span>
+                        <span className="rating">⭐ {menuList.card.info.ratings.aggregatedRating.rating} ({menuList.card.info.ratings.aggregatedRating.ratingCount})</span>
+                        <p className="description">{menuList.card.info.description}</p>
+                        
+                    </div>
+
+                    <div className="menu-img">
+                         <img src={MENU_ITEM_IMG + menuList.card.info.imageId} className='menu-item-img'/>
+
+
                         <button className="add-btn">+ Add</button>
                     </div>
                 </div>
-
-                {/* <!-- Menu Item 2 --> */}
-                <div className="menu-card">
-                    <div className="menu-content">
-                        <h4>Cheese Burst Pizza</h4>
-                        <span className="price">₹299</span>
-                        <span className="discount">🔥 50% OFF | USE CHEESY50</span>
-                        <span className="rating">⭐ 4.8 (25)</span>
-                        <p className="description">A delicious cheese burst pizza topped with extra mozzarella, fresh veggies, and a crispy crust.</p>
-                        <button className="add-btn">+ Add</button>
-                    </div>
-                </div>
-
+                );
+                    
+                })}
+            
             </div>
 
             </div>
