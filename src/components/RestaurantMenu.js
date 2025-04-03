@@ -13,11 +13,24 @@ const RestaurantMenu = () => {
     
 
     const fetchMenu = async () => {
-        const data = await fetch('https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.62026&lng=77.04507&restaurantId=751410&catalog_qa=undefined&submitAction=ENTER');
-        const json =  await data.json();
 
-        setresInfo(json.data);
+        try {
+            let response = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.62026&lng=77.04507&restaurantId=751410&catalog_qa=undefined&submitAction=ENTER'");
 
+            if (!response.ok) {
+                throw new Error(`HTTP Error! Status: ${response.status}`);
+            }
+            let json = await response.json();
+    
+            setresInfo(json.data);
+
+            console.log(resInfo);
+            
+
+        } catch (error) {
+            console.error("Error fetching data:", error.message);
+        }
+        
 
         // areaName avgRating costForTwoMessage cuisines name totalRatingsString sla.slaString
 
@@ -31,9 +44,9 @@ const RestaurantMenu = () => {
     const itemCards  = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards;
     
 
-    console.log(itemCards);
+    // console.log(itemCards);
     
-    // console.log(resInfo.cards[4].groupedCard?.cardGroupMap?.REGULAR?.cards[1].card.card.itemCards[0].card.info.name);
+    // console.log(resInfo.cards[4].groupedCard?.cardGroupMap?.REGULAR?.cards[1].card.card.itemCards);
     
     
 
@@ -65,7 +78,7 @@ const RestaurantMenu = () => {
                     <div className="menu-card">
                     <div className="menu-content">
                         <h4>{menuList.card.info.name}</h4>
-                        <span className="price">₹{menuList.card.info.price/100}</span>
+                        <span className="price">₹{menuList.card.info.defaultPrice/100}</span>
                         <span className="rating">⭐ {menuList.card.info.ratings.aggregatedRating.rating} ({menuList.card.info.ratings.aggregatedRating.ratingCount})</span>
                         <p className="description">{menuList.card.info.description}</p>
                         
