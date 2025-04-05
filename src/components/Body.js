@@ -1,6 +1,7 @@
 // import {restaurantList} from '../utiles/dataset';
 import RestaurantCard from './RestaurantCard';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router';
 
 const Body = () => {
 
@@ -11,7 +12,8 @@ const Body = () => {
 
     useEffect(() => {
         fetchData();
-    }, [restaurantList]);
+        
+    },[]);
 
     const fetchData = async () => {
 
@@ -20,9 +22,7 @@ const Body = () => {
         const json = await data.json();
 
         setrestaurantList(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
-
         setfilterRestaurantList(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
-
  
     }
     
@@ -75,8 +75,9 @@ const Body = () => {
         <div className='res-container'>
             {filterRestaurantList.map((restaurant) => (
                 // console.log(restaurant.info)
-            <RestaurantCard key={restaurant.info.id} resList = {restaurant.info}/>
+            <Link key={restaurant.info.id} to={"restaurant/" + restaurant.info.id}> <RestaurantCard  resList = {restaurant.info}/>   </Link>  
 
+            // <RestaurantCard key={restaurant.info.id} resList = {restaurant.info}/>
            ))}
 
           </div>

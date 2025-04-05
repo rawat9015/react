@@ -7,12 +7,12 @@ import Body from './components/Body';
 import About from './components/About';
 import Contact from './components/Contact';
 import RestaurantMenu from './components/RestaurantMenu';
-
-
-import Error from './components/Error';
+import Error from './components/UserClass';
 
 // import {createBrowserRouter, RouterProvider } from "react-router-dom";
 import { createBrowserRouter , RouterProvider, Outlet } from "react-router";
+
+import UserClass from './components/UserClass';
 
 // EP-4 (Building Food App)
 
@@ -21,6 +21,7 @@ const AppLayout = () => {
         <div className='app-layout'>
             <Header />
             <Outlet />
+            
         </div>
     );
 };
@@ -49,6 +50,11 @@ const appRouter = createBrowserRouter([
             {
                 path: "/restaurant/:resId",
                 element: <RestaurantMenu />
+            },
+            {
+                path:"/class",
+                element: <UserClass name={'Neha Rawat'} location={'New Delhi'}  contact={'0987654321'} />,
+        
             }
         ]
     },

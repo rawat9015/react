@@ -3,6 +3,9 @@ import {MENU_ITEM_IMG} from "../utiles/contstants"
 import veg from '../../veg.png';
 import nonVeg from '../../non-veg.png';
 
+import { useParams } from "react-router";
+import { MENU_API } from "../utiles/contstants";
+
 const RestaurantMenu = () => {
 
     const [resInfo, setresInfo] = useState([]);
@@ -12,6 +15,11 @@ const RestaurantMenu = () => {
     const [mainResInfo, setmainResInfo] = useState([]);
 
 
+    const [isVegChecked , setisVegChecked] = useState(false);
+    const [isNonVegChecked , setisNonVegChecked] = useState(false);
+
+
+    const {resId} = useParams();    
 
     useEffect(() => {
 
@@ -23,19 +31,20 @@ const RestaurantMenu = () => {
     const fetchMenu = async () => {
 
         try {
-            let response = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.62026&lng=77.04507&restaurantId=751410&catalog_qa=undefined&submitAction=ENTER'");
-
+            let response = await fetch(MENU_API + resId);
+    
             if (!response.ok) {
                 throw new Error(`HTTP Error! Status: ${response.status}`);
             }
             let json = await response.json();
-    
-            console.log(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[4]?.card?.card?.itemCards);
-            
-            // setresInfo(json.data);
-            setresInfo(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[4]?.card?.card?.itemCards);
 
-            setfilterResInfo(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[4]?.card?.card?.itemCards)
+            // console.log(json.data.cards);
+
+    
+            // console.log(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[4]?.card?.card?.itemCards);
+    
+            setresInfo(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card?.card?.itemCards);
+            setfilterResInfo(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card?.card?.itemCards)
             
             setmainResInfo(json.data.cards[2]?.card?.card?.info);
             
@@ -65,11 +74,15 @@ const RestaurantMenu = () => {
                 {/* <p className="delivery-time">⏳ {sla.slaString}</p> */}
 
                     <label className="switch">
-                    <input type="checkbox"  name="vegcheck" value='veg' onChange={(e) =>{
-                        
-                        const vegCheck = e.target.checked;
+                    <input type="checkbox"  checked={isVegChecked} value='veg' onChange={(e) =>{
 
-                        if(vegCheck === true){
+                        const checked = e.target.checked;
+
+                        setisVegChecked(checked)
+                        setisNonVegChecked(false);
+                        
+
+                        if(checked){
 
                             let vegCheckFilter = resInfo.filter(
 
@@ -91,11 +104,14 @@ const RestaurantMenu = () => {
 
 
                     <label className="switch">
-                    <input type="checkbox"  name="vegcheck" value="nonveg" onChange={(e) =>{
+                    <input type="checkbox"  checked={isNonVegChecked} value="nonveg" onChange={(e) =>{
                         
-                        const vegCheck = e.target.checked;
+                        const checked = e.target.checked;
 
-                        if(vegCheck === true){
+                        setisNonVegChecked(checked);
+                        setisVegChecked(false);
+
+                        if(checked){
 
                             let vegCheckFilter = resInfo.filter(
 
@@ -123,8 +139,10 @@ const RestaurantMenu = () => {
             <div className="menu-container">
 
                 {/* <!-- Menu Item 1 --> */}
+                {console.log(filterResInfo)}
+
                 {filterResInfo.map((menuList) => {
-                    //console.log(menuList.card.info);
+                    // console.log(menuList.card.info.price);
 
                     return ( 
                     <div className="menu-card" key={menuList.card.info.id}>
@@ -134,7 +152,7 @@ const RestaurantMenu = () => {
 
                         <h4>{menuList.card.info.name}</h4>
 
-                        <span className="price">₹{menuList.card.info.price/100}</span>
+                        <span className="price">₹{menuList.card.info.price === undefined ? menuList.card.info.defaultPrice/100 : menuList.card.info.price/100}</span>
 
                         <span className="rating">⭐ {menuList.card.info.ratings.aggregatedRating.rating} ({menuList.card.info.ratings.aggregatedRating.ratingCount})</span>
 
