@@ -3,6 +3,9 @@ import React from "react";
 class UserClass extends React.Component{
 
     constructor(props){
+
+        console.log('constructor');
+        
         super(props);
 
         this.state = {
@@ -12,7 +15,17 @@ class UserClass extends React.Component{
         }
     }
 
+    componentDidMount(){
+        console.log('component did mount'); 
+    }
+
+    componentWillUnmount(){
+        console.log('component will unmount');
+    }
+
     render(){
+        console.log('render');
+        
         return (
             <div className="class-card">
             
