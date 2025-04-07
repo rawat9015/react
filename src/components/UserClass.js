@@ -4,7 +4,7 @@ class UserClass extends React.Component{
 
     constructor(props){
 
-        console.log('constructor');
+        // console.log('constructor');
         
         super(props);
 
@@ -16,15 +16,15 @@ class UserClass extends React.Component{
     }
 
     componentDidMount(){
-        console.log('component did mount'); 
+        // console.log('component did mount'); 
     }
 
     componentWillUnmount(){
-        console.log('component will unmount');
+        // console.log('component will unmount');
     }
 
     render(){
-        console.log('render');
+        // console.log('render');
         
         return (
             <div className="class-card">

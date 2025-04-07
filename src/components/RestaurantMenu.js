@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import {MENU_ITEM_IMG} from "../utiles/contstants"
 import veg from '../../veg.png';
 import nonVeg from '../../non-veg.png';
-
 import { useParams } from "react-router";
-import { MENU_API } from "../utiles/contstants";
+import useRestaurantMenu from "../utiles/useRestaurantMenu"
+
+
+
 
 const RestaurantMenu = () => {
 
-    const [resInfo, setresInfo] = useState([]);
+    // const [resInfo, setresInfo] = useState([]);
     const [filterResInfo, setfilterResInfo] = useState([]);
 
 
@@ -21,38 +23,32 @@ const RestaurantMenu = () => {
 
     const {resId} = useParams();    
 
-    useEffect(() => {
+    const resInfo = useRestaurantMenu(resId);
 
-        fetchMenu();
 
-    }, []);
+
+
+    // useEffect(() => {
+
+    //     fetchMenu();
+
+    // }, []);
     
 
-    const fetchMenu = async () => {
+    // const fetchMenu = async () => {
 
-        try {
-            let response = await fetch(MENU_API + resId);
-    
-            if (!response.ok) {
-                throw new Error(`HTTP Error! Status: ${response.status}`);
-            }
-            let json = await response.json();
+    //         let response = await fetch(MENU_API + resId);
+    //         let json = await response.json();
 
-            // console.log(json.data.cards);
-
+    //         // console.log(json.data.cards);
     
-            // console.log(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[4]?.card?.card?.itemCards);
+    //         // console.log(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[4]?.card?.card?.itemCards);
     
-            setresInfo(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card?.card?.itemCards);
-            setfilterResInfo(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card?.card?.itemCards)
+    //         setresInfo(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card?.card?.itemCards);
+    //         setfilterResInfo(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card?.card?.itemCards)
             
-            setmainResInfo(json.data.cards[2]?.card?.card?.info);
-            
-
-        } catch (error) {
-            console.error("Error fetching data:", error.message);
-        }
-    };
+    //         setmainResInfo(json.data.cards[2]?.card?.card?.info);
+    // };
 
     if( resInfo === null ) return <h1>Loading.....</h1>;
 
