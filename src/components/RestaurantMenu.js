@@ -11,10 +11,10 @@ import useRestaurantMenu from "../utiles/useRestaurantMenu"
 const RestaurantMenu = () => {
 
     // const [resInfo, setresInfo] = useState([]);
-    const [filterResInfo, setfilterResInfo] = useState([]);
+    // const [filterResInfo, setfilterResInfo] = useState([]);
 
 
-    const [mainResInfo, setmainResInfo] = useState([]);
+    // const [mainResInfo, setmainResInfo] = useState([]);
 
 
     const [isVegChecked , setisVegChecked] = useState(false);
@@ -25,8 +25,8 @@ const RestaurantMenu = () => {
 
     const resInfo = useRestaurantMenu(resId);
 
-
-
+    console.log(resInfo);
+    
 
     // useEffect(() => {
 
