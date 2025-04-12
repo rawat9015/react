@@ -6,52 +6,16 @@ import { useParams } from "react-router";
 import useRestaurantMenu from "../utiles/useRestaurantMenu"
 
 
-
-
 const RestaurantMenu = () => {
-
-    // const [resInfo, setresInfo] = useState([]);
-    // const [filterResInfo, setfilterResInfo] = useState([]);
-
-
-    // const [mainResInfo, setmainResInfo] = useState([]);
-
 
     const [isVegChecked , setisVegChecked] = useState(false);
     const [isNonVegChecked , setisNonVegChecked] = useState(false);
 
-
     const {resId} = useParams();    
 
-    const resInfo = useRestaurantMenu(resId);
-
-    console.log(resInfo);
+    const { resInfo, filterResInfo, mainResInfo,setfilterResInfo } = useRestaurantMenu(resId);
     
-
-    // useEffect(() => {
-
-    //     fetchMenu();
-
-    // }, []);
-    
-
-    // const fetchMenu = async () => {
-
-    //         let response = await fetch(MENU_API + resId);
-    //         let json = await response.json();
-
-    //         // console.log(json.data.cards);
-    
-    //         // console.log(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[4]?.card?.card?.itemCards);
-    
-    //         setresInfo(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card?.card?.itemCards);
-    //         setfilterResInfo(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card?.card?.itemCards)
-            
-    //         setmainResInfo(json.data.cards[2]?.card?.card?.info);
-    // };
-
     if( resInfo === null ) return <h1>Loading.....</h1>;
-
 
     const {areaName, avgRating, costForTwoMessage, cuisines, name, totalRatingsString, } = mainResInfo;
 
@@ -77,13 +41,10 @@ const RestaurantMenu = () => {
                         setisVegChecked(checked)
                         setisNonVegChecked(false);
                         
-
                         if(checked){
 
                             let vegCheckFilter = resInfo.filter(
-
                                 (res) => res.card.info.itemAttribute.vegClassifier === 'VEG'
-        
                             );
                             
                             setfilterResInfo(vegCheckFilter);
@@ -93,11 +54,9 @@ const RestaurantMenu = () => {
                             setfilterResInfo(resInfo);
                         }
 
- 
                     }}/>
                     <span className="slider round"></span>
                     </label>
-
 
                     <label className="switch">
                     <input type="checkbox"  checked={isNonVegChecked} value="nonveg" onChange={(e) =>{
@@ -135,7 +94,6 @@ const RestaurantMenu = () => {
             <div className="menu-container">
 
                 {/* <!-- Menu Item 1 --> */}
-                {console.log(filterResInfo)}
 
                 {filterResInfo.map((menuList) => {
                     // console.log(menuList.card.info.price);

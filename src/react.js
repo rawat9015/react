@@ -1,10 +1,10 @@
 
-import React, { Component } from 'react';
+import React, {lazy,Suspense, Component } from 'react';
 import ReactDOM from 'react-dom/client';
 
 import Header from './components/Header';
 import Body from './components/Body';
-import About from './components/About';
+// import About from './components/About';
 import Contact from './components/Contact';
 import RestaurantMenu from './components/RestaurantMenu';
 import Error from './components/UserClass';
@@ -15,6 +15,8 @@ import { createBrowserRouter , RouterProvider, Outlet } from "react-router";
 import UserClass from './components/UserClass';
 
 // EP-4 (Building Food App)
+
+const About = lazy(() => import('./components/About'));
 
 const AppLayout = () => {
     return (
@@ -39,8 +41,8 @@ const appRouter = createBrowserRouter([
             },
             { 
                 path : "/about",
-                element : <About />
-        
+                element : <Suspense fallback={<h1>Wait a Litile</h1>}>   <About /> </Suspense>
+
             },
         
             {

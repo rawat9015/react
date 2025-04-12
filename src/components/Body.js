@@ -3,6 +3,8 @@ import RestaurantCard from './RestaurantCard';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
 
+import useOnlineStatus from '../utiles/useOnlineStatus';
+
 const Body = () => {
 
     let[restaurantList, setrestaurantList] = useState([]);
@@ -28,9 +30,12 @@ const Body = () => {
     
     const[seacrhText , setSeacrhText] = useState('');
 
+    const onlineStatus = useOnlineStatus();
+  
+    if(onlineStatus === false)  return <h1>Looks Like you are offline!! Please check your internet connection</h1>; 
+
     return(
     <div className='body'>
-
 
         <div className='search'>
 

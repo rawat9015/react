@@ -19,30 +19,22 @@ const useRestaurantMenu = (resId) =>{
             let response = await fetch(MENU_API + resId);
             let json = await response.json();
 
-    console.log(json);
-
-
             setresInfo(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card?.card?.itemCards);
-            setfilterResInfo(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card?.card?.itemCards)
+            
+            setfilterResInfo(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card?.card?.itemCards);
             
             setmainResInfo(json.data.cards[2]?.card?.card?.info);
     };
     
 
-    
+    // return resInfo;
 
-    
     return {
-        values: {
-            resInfo,
-            filterResInfo,
-            mainResInfo,
-        },
-        actions: {
-            setresInfo,
-            setfilterResInfo,
-            setmainResInfo,
-        }
+        resInfo,
+        filterResInfo,
+        mainResInfo,
+        setfilterResInfo,
+        setmainResInfo
       };
 }
 
