@@ -14,13 +14,13 @@ const Header = () => {
                 <img className="logo" src={COMPANY_LOGO} />
             </div>
             <div className='nav-item'>
-                <ul>
-                    <li> Status : {(onlineStatus === false) ? '🔴' : '🟢' } </li>
-                    <li><Link to="/" >Home </Link></li>
+                <ul className='flex'>
+                    <li className='p-3'> Status : {(onlineStatus === false) ? '🔴' : '🟢' } </li>
+                    <li className='p-3'><Link to="/" >Home </Link></li>
                  
-                    <li><Link to='/about'> About US </Link></li>
-                    <li><Link to='/contact'> Contact US </Link></li>
-                    <li><Link href='/cart'> Cart </Link></li>
+                    <li className='p-3'><Link to='/about'> About US </Link></li>
+                    <li className='p-3'><Link to='/contact'> Contact US </Link></li>
+                    <li className='p-3'><Link href='/cart'> Cart </Link></li>
                     <button className="btn" onClick={() =>{
                        (sessionBtn === 'login') ? setSessionBtn('logout') : setSessionBtn('login');
                     }}>{sessionBtn}</button>
