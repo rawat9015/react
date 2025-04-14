@@ -9,19 +9,19 @@ const Header = () => {
 
     const onlineStatus = useOnlineStatus();
     return (
-        <div className='header'>
+        <div className='header bg-amber-200 flex justify-between items-center px-5'>
             <div className='logo-container'>
-                <img className="logo" src={COMPANY_LOGO} />
+                <img className="w-[90px] logo" src={COMPANY_LOGO} />
             </div>
             <div className='nav-item'>
-                <ul className='flex'>
-                    <li className='p-3'> Status : {(onlineStatus === false) ? '🔴' : '🟢' } </li>
-                    <li className='p-3'><Link to="/" >Home </Link></li>
+                <ul className='flex font-[18px] font-semibold'>
+                    <li className='hover:bg-black hover:text-white p-3'> Status : {(onlineStatus === false) ? '🔴' : '🟢' } </li>
+                    <li className='hover:bg-black hover:text-white p-3'><Link to="/" >Home </Link></li>
                  
-                    <li className='p-3'><Link to='/about'> About US </Link></li>
-                    <li className='p-3'><Link to='/contact'> Contact US </Link></li>
-                    <li className='p-3'><Link href='/cart'> Cart </Link></li>
-                    <button className="btn" onClick={() =>{
+                    <li className='hover:bg-black hover:text-white p-3'><Link to='/about'> About US </Link></li>
+                    <li className='hover:bg-black hover:text-white p-3'><Link to='/contact'> Contact US </Link></li>
+                    <li className='hover:bg-black hover:text-white p-3'><Link href='/cart'> Cart </Link></li>
+                    <button className="bg-white px-5 rounded-sm hover:bg-black hover:text-white btn" onClick={() =>{
                        (sessionBtn === 'login') ? setSessionBtn('logout') : setSessionBtn('login');
                     }}>{sessionBtn}</button>
 
