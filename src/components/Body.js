@@ -39,12 +39,11 @@ const Body = () => {
 
         <div className='search'>
 
-
-            <input type='text' placeholder='Enter Search Value' className='seacrh-box' value={seacrhText} onChange={(e) =>{
+            <input type='text' placeholder='Enter Search Value' className='w-100px border-1 p-2 m-5 seacrh-box' value={seacrhText} onChange={(e) =>{
                 setSeacrhText(e.target.value);
             }}/>
 
-            <button className='btn' onClick={() => {
+            <button className='border-1 p-2 me-2 bg-gray-200 cursor-pointer btn' onClick={() => {
 
                 
                 const filteredList = restaurantList.filter((res) => 
@@ -59,7 +58,7 @@ const Body = () => {
 
 
 
-            <button className='rate-btn' onClick={() => {
+            <button className='border-1 p-2 me-2 bg-gray-200 cursor-pointer rate-btn' onClick={() => {
                 
                 let filterList = restaurantList.filter(
 
@@ -77,7 +76,7 @@ const Body = () => {
                 Click for top rating</button>
         </div>
         
-        <div className='res-container'>
+        <div className='mx-5 flex flex-wrap justify-between res-container'>
             {filterRestaurantList.map((restaurant) => (
                 // console.log(restaurant.info)
             <Link key={restaurant.info.id} to={"restaurant/" + restaurant.info.id}> <RestaurantCard  resList = {restaurant.info}/>   </Link>  

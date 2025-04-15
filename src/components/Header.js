@@ -14,7 +14,7 @@ const Header = () => {
                 <img className="w-[90px] logo" src={COMPANY_LOGO} />
             </div>
             <div className='nav-item'>
-                <ul className='flex font-[18px] font-semibold'>
+                <ul className='flex font-semibold'>
                     <li className='hover:bg-black hover:text-white p-3'> Status : {(onlineStatus === false) ? '🔴' : '🟢' } </li>
                     <li className='hover:bg-black hover:text-white p-3'><Link to="/" >Home </Link></li>
                  

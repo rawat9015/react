@@ -16,7 +16,7 @@ const RestaurantCard = (resList) => {
 
     return (
         <div className='res-card'> 
-          <img src={CARD_IMG + cloudinaryImageId} className='res-logo'/>
+          <img src={CARD_IMG + cloudinaryImageId} className='w-[350px] res-logo'/>
             <div className='res-row-1'>
             <h4 className='res-name'>{name}</h4><span> {avgRating} <i className="fa-solid fa-star star-icon"></i></span>
             </div>
