@@ -15,18 +15,18 @@ const RestaurantCard = (resList) => {
     
 
     return (
-        <div className='res-card'> 
-          <img src={CARD_IMG + cloudinaryImageId} className='w-[350px] res-logo'/>
-            <div className='res-row-1'>
-            <h4 className='res-name'>{name}</h4><span> {avgRating} <i className="fa-solid fa-star star-icon"></i></span>
+        <div className='res-card bg-gray-300 my-5 hover:bg-gray-400 w-[260px] h-[480px]'> 
+          <img src={CARD_IMG + cloudinaryImageId} className='w-[260px] h-[260px] res-logo'/>
+            <div className='px-5 py-2 res-row-1'>
+            <h4 className='res-name font-bold'>{name}</h4><span> {avgRating} <i className="text-yellow-400 fa-solid fa-star star-icon"></i></span>
             </div>
 
-            <div className='res-row-2'>
-                <p>{cuisines.join(', ')}</p>   
-                <p>{costForTwo}</p> 
+            <div className='px-5 py-2 res-row-2'>
+                <p className="truncate w-50">{cuisines.join(', ')}</p>   
+                <p className="font-bold">{costForTwo}</p> 
             </div>
 
-            <div className='res-row-3'> 
+            <div className='px-5 py-2 res-row-3'> 
                 <p>{sla?.deliveryTime} Mins</p>
             </div>
         </div>

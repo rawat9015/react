@@ -25,9 +25,11 @@ const Body = () => {
 
         setrestaurantList(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
         setfilterRestaurantList(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
- 
+         
     }
     
+    console.log(restaurantList);
+
     const[seacrhText , setSeacrhText] = useState('');
 
     const onlineStatus = useOnlineStatus();
