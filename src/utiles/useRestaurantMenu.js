@@ -7,6 +7,7 @@ const useRestaurantMenu = (resId) =>{
     const [resInfo , setresInfo] = useState(null);
     const [filterResInfo, setfilterResInfo] = useState([]);
     const [mainResInfo, setmainResInfo] = useState([]);
+    const [resInfoList, setresInfoList] = useState([]);
 
     useEffect(() =>{
 
@@ -24,6 +25,8 @@ const useRestaurantMenu = (resId) =>{
             setfilterResInfo(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards[1]?.card?.card?.itemCards);
             
             setmainResInfo(json.data.cards[2]?.card?.card?.info);
+
+            setresInfoList(json.data);
     };
     
 
@@ -33,6 +36,7 @@ const useRestaurantMenu = (resId) =>{
         resInfo,
         filterResInfo,
         mainResInfo,
+        resInfoList,
         setfilterResInfo,
         setmainResInfo
       };

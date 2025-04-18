@@ -13,11 +13,14 @@ const RestaurantMenu = () => {
 
     const {resId} = useParams();    
 
-    const { resInfo, filterResInfo, mainResInfo,setfilterResInfo } = useRestaurantMenu(resId);
+    const { resInfo, filterResInfo, mainResInfo,setfilterResInfo , resInfoList} = useRestaurantMenu(resId);
     
     if( resInfo === null ) return <h1>Loading.....</h1>;
 
     const {areaName, avgRating, costForTwoMessage, cuisines, name, totalRatingsString, } = mainResInfo;
+
+    console.log(resInfoList);
+    
 
     return (
         // <div className="main-menu bg-gray-300">
