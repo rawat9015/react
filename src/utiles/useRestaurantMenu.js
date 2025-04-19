@@ -26,7 +26,7 @@ const useRestaurantMenu = (resId) =>{
             
             setmainResInfo(json.data.cards[2]?.card?.card?.info);
 
-            setresInfoList(json.data);
+            setresInfoList(json.data.cards[4]?.groupedCard?.cardGroupMap?.REGULAR.cards);
     };
     
 
