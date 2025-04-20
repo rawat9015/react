@@ -1,16 +1,21 @@
 // import {restaurantList} from '../utiles/dataset';
 import RestaurantCard from './RestaurantCard';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router';
 
 import useOnlineStatus from '../utiles/useOnlineStatus';
+import UserContext from '../utiles/UserContext';
+
 
 const Body = () => {
 
     let[restaurantList, setrestaurantList] = useState([]);
 
-
     let[filterRestaurantList , setfilterRestaurantList] = useState([]);
+
+    const [userName, setuserName] = useState([]);
+
+    const {setuserName} = useContext(UserContext);
 
     useEffect(() => {
         fetchData();
@@ -76,6 +81,14 @@ const Body = () => {
                 
                 Click for top rating</button>
         </div>
+
+        <input type='text' placeholder='Enter User Name' className='w-100px border-1 p-2 m-5 seacrh-box' onChange={(e) =>{
+    setUserName(e.target.value);
+}} />
+
+
+   
+        
         
         <div className='mx-5 flex flex-wrap justify-between res-container'>
             {filterRestaurantList.map((restaurant) => (

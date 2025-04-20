@@ -1,13 +1,20 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import {COMPANY_LOGO} from "../utiles/contstants";
 import { Link } from 'react-router';
 import useOnlineStatus from '../utiles/useOnlineStatus';
+import UserContext from '../utiles/UserContext';
 
 const Header = () => {
 
     const [sessionBtn , setSessionBtn] = useState("login");
 
     const onlineStatus = useOnlineStatus();
+
+    const data = useContext(UserContext);
+
+    console.log(data);
+    
+
     return (
         <div className='header bg-amber-200 flex justify-between items-center px-5'>
             <div className='logo-container'>
@@ -24,6 +31,8 @@ const Header = () => {
                     <button className="bg-white px-5 rounded-sm hover:bg-black hover:text-white btn" onClick={() =>{
                        (sessionBtn === 'login') ? setSessionBtn('logout') : setSessionBtn('login');
                     }}>{sessionBtn}</button>
+
+                <li className='hover:bg-black hover:text-white p-3'><Link href='/cart'> {data.loggedInUser} </Link></li>
 
                 </ul>
 
