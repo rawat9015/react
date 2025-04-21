@@ -13,10 +13,8 @@ const Body = () => {
 
     let[filterRestaurantList , setfilterRestaurantList] = useState([]);
 
-    const [userName, setuserName] = useState([]);
-
-    const {setuserName} = useContext(UserContext);
-
+    const {loggedInUser , setloggedInUser} = useContext(UserContext);
+    
     useEffect(() => {
         fetchData();
         
@@ -32,7 +30,6 @@ const Body = () => {
         
         setfilterRestaurantList(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
     }
-
 
     const[seacrhText , setSeacrhText] = useState('');
 
@@ -82,8 +79,8 @@ const Body = () => {
                 Click for top rating</button>
         </div>
 
-        <input type='text' placeholder='Enter User Name' className='w-100px border-1 p-2 m-5 seacrh-box' onChange={(e) =>{
-    setUserName(e.target.value);
+        <input type='text' placeholder='Enter User Name' className='w-100px border-1 p-2 m-5 seacrh-box' value={loggedInUser} onChange={(e) =>{
+    setloggedInUser(e.target.value);
 }} />
 
 

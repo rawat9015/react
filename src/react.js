@@ -1,5 +1,5 @@
 
-import React, {lazy,Suspense, Component } from 'react';
+import React, {lazy,Suspense, Component, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 
 import Header from './components/Header';
@@ -8,6 +8,8 @@ import Body from './components/Body';
 import Contact from './components/Contact';
 import RestaurantMenu from './components/RestaurantMenu';
 import Error from './components/UserClass';
+
+import UserContext from './utiles/UserContext';
 
 // import {createBrowserRouter, RouterProvider } from "react-router-dom";
 import { createBrowserRouter , RouterProvider, Outlet } from "react-router";
@@ -19,12 +21,19 @@ import UserClass from './components/UserClass';
 const About = lazy(() => import('./components/About'));
 
 const AppLayout = () => {
+
+const [loggedInUser, setloggedInUser] = useState("Default User");
+
     return (
+       <UserContext.Provider value={{loggedInUser, setloggedInUser}}>
+
         <div className='app-layout'>
             <Header />
             <Outlet />
             
         </div>
+
+        </UserContext.Provider> 
     );
 };
 
