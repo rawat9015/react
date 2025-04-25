@@ -16,6 +16,9 @@ import { createBrowserRouter , RouterProvider, Outlet } from "react-router";
 
 import UserClass from './components/UserClass';
 
+import { Provider } from 'react-redux';
+import appStore from './utiles/appStore';
+
 // EP-4 (Building Food App)
 
 const About = lazy(() => import('./components/About'));
@@ -24,7 +27,9 @@ const AppLayout = () => {
 
 const [loggedInUser, setloggedInUser] = useState("Default User");
 
+
     return (
+    <Provider store={appStore}>
        <UserContext.Provider value={{loggedInUser, setloggedInUser}}>
 
         <div className='app-layout'>
@@ -34,6 +39,7 @@ const [loggedInUser, setloggedInUser] = useState("Default User");
         </div>
 
         </UserContext.Provider> 
+     </Provider>
     );
 };
 

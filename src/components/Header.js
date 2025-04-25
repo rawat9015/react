@@ -3,6 +3,8 @@ import {COMPANY_LOGO} from "../utiles/contstants";
 import { Link } from 'react-router';
 import useOnlineStatus from '../utiles/useOnlineStatus';
 import UserContext from '../utiles/UserContext';
+import { useSelector } from 'react-redux';
+
 
 const Header = () => {
 
@@ -12,7 +14,10 @@ const Header = () => {
 
     const data = useContext(UserContext);
 
-    console.log(data);
+
+    // this is how we subscribe to the store
+    const cartItem = useSelector((store) => store.cart.items);
+
     
 
     return (
@@ -27,7 +32,7 @@ const Header = () => {
                  
                     <li className='hover:bg-black hover:text-white p-3'><Link to='/about'> About US </Link></li>
                     <li className='hover:bg-black hover:text-white p-3'><Link to='/contact'> Contact US </Link></li>
-                    <li className='hover:bg-black hover:text-white p-3'><Link href='/cart'> Cart </Link></li>
+                    <li className='hover:bg-black hover:text-white p-3 font-bold'><Link href='/cart'> Cart {cartItem.length} </Link></li>
                     <button className="bg-white px-5 rounded-sm hover:bg-black hover:text-white btn" onClick={() =>{
                        (sessionBtn === 'login') ? setSessionBtn('logout') : setSessionBtn('login');
                     }}>{sessionBtn}</button>
