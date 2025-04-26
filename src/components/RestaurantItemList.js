@@ -1,9 +1,18 @@
 import { MENU_ITEM_IMG } from '../utiles/contstants';
 import veg from '../../veg.png';
 import nonVeg from '../../non-veg.png';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../utiles/cartSlice';
 
 
 const RestaurantItemList = (items) => {
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = (menuList) =>{
+
+    dispatch(addItem(menuList));
+  }
         
     return  <div className="grid md:grid-cols-2 gap-6">
     {items.items.map((menuList) => (
@@ -24,7 +33,9 @@ const RestaurantItemList = (items) => {
         <div className="w-28">
           <img src={MENU_ITEM_IMG + menuList.card.info.imageId} className="w-full h-24 object-cover rounded" alt={menuList.card.info.name} />
 
-          <button className="mt-2 w-full bg-green-500 text-white text-sm py-1 rounded hover:bg-green-600">+ Add</button>
+          <button onClick={() => handleAddItem(menuList)}
+           
+           className="mt-2 w-full bg-green-500 text-white text-sm py-1 rounded hover:bg-green-600 cursor-pointer">+ Add</button>
           
         </div>
       </div>

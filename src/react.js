@@ -18,6 +18,7 @@ import UserClass from './components/UserClass';
 
 import { Provider } from 'react-redux';
 import appStore from './utiles/appStore';
+import Cart from './components/Cart';
 
 // EP-4 (Building Food App)
 
@@ -72,6 +73,10 @@ const appRouter = createBrowserRouter([
                 path:"/class",
                 element: <UserClass name={'Neha Rawat'} location={'New Delhi'}  contact={'0987654321'} />,
         
+            },
+            {
+                path:"/cart",
+                element:<Cart />
             }
         ]
     },

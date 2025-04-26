@@ -32,7 +32,8 @@ const Header = () => {
                  
                     <li className='hover:bg-black hover:text-white p-3'><Link to='/about'> About US </Link></li>
                     <li className='hover:bg-black hover:text-white p-3'><Link to='/contact'> Contact US </Link></li>
-                    <li className='hover:bg-black hover:text-white p-3 font-bold'><Link href='/cart'> Cart {cartItem.length} </Link></li>
+                    <li className='hover:bg-black hover:text-white p-3 font-bold'><Link to='/cart'> Cart {cartItem.length} </Link></li>
+
                     <button className="bg-white px-5 rounded-sm hover:bg-black hover:text-white btn" onClick={() =>{
                        (sessionBtn === 'login') ? setSessionBtn('logout') : setSessionBtn('login');
                     }}>{sessionBtn}</button>
