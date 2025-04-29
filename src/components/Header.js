@@ -5,8 +5,6 @@ import UserContext from '../utiles/UserContext';
 import { useSelector } from 'react-redux';
 import { Link } from "react-dom";
 
-
-
 const Header = () => {
 
     const [sessionBtn , setSessionBtn] = useState("login");
